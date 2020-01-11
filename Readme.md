@@ -41,6 +41,7 @@ import Image from 'react-native-remote-svg';
 
 <Image
   source={{ uri: 'https://example.com/my-pic.svg' }}
+  cacheContent={true}
   style={{ width: 200, height: 532 }}
 />;
 ```
@@ -74,6 +75,7 @@ You can load normal jpg/png images as well
 ```js
 <Image
   source={{ uri: 'https://example.com/my-other-pic.png' }
+  cacheContent={true}
   style={{ width: 100, height: 120}}
 />
 ```
@@ -99,6 +101,10 @@ Here are the list of react-native Image features that are supported:
 - [ ] defaultSource
 - [ ] onPartialLoad
 - [ ] onProgress
+
+Additional Features
+
+- [x] option to force cache the response
 
 The goal is to have full feature parity with react-native's Image and then add
 this component directly into react-native itself.
