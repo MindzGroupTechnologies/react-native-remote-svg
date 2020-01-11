@@ -47,6 +47,7 @@ class SvgImage extends Component {
   }
   doFetch = async props => {
     let uri = props.source && props.source.uri;
+    let cacheContent = props.cacheContent || false;
     if (uri) {
       props.onLoadStart && props.onLoadStart();
       if (uri.match(/^data:image\/svg/)) {
@@ -54,7 +55,7 @@ class SvgImage extends Component {
         this.setState({ fetchingUrl: uri, svgContent: uri.slice(index) });
       } else {
         try {
-          const res = await fetch(uri);
+          const res = await fetch(uri, { cache: cacheContent ? 'force-cache' : 'default' });
           const text = await res.text();
           this.setState({ fetchingUrl: uri, svgContent: text });
         } catch (err) {
